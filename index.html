@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        fetch('http://localhost:5000/') //middleApp 오리진에서 cros처리 해놔서 통신이 가능하지 원래는 안됨 경로가 다르니까!
+        .then(res=>res.json())
+        .then(result => console.log(result));
+    </script>
+</body>
+</html>
