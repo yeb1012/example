@@ -21,9 +21,9 @@ const pool = mysql.createPool({ //pool생성
 
 // })
 
-const query = async(alias,values) => {
+const query = async(alias,values) => { //values는 있어도 없어도 됨 전체조회할땐 //alias는 필드명이라 생각하면 됨 다른거 써도됨
     return new Promise((resolve, reject) =>{
-         pool.query(sql[alias],values, (err,results)=>{ //alias란?
+         pool.query(sql[alias],values, (err,results)=>{ //alias란? //대괄호를 쓰는 이유 : 값을 동적으로 alias필드명으로 전달하고 있다는 뜻
             if(err){
                 console.log(err);
                 reject({err});
