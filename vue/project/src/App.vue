@@ -1,7 +1,11 @@
 <template>
   <nav>
     <router-link to="/">Home</router-link> |
-    <router-link to="/dataBinding">DataBinding</router-link> <!-- router-link는 a태그 기반-->
+    <router-link to="/dataBinding">DataBinding</router-link> | <!-- router-link는 a태그 기반-->
+    <router-link to="/listBinding">ListBinding</router-link> |
+    <router-link to="/ifBinding">IfBinding</router-link> |
+    <router-link to="/onEvent">onEvent</router-link> |
+    <router-link to="/option">option</router-link> |
   </nav>
   <router-view/>
 </template>

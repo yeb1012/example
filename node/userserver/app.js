@@ -15,6 +15,11 @@ app.get('/tusers', async(req, res)=>{
     let list = await mysql.query('tUsersList');
     res.send(list)
 })
+app.get('/tusers/:id', async(req, res)=>{
+    let id = req.params.id
+    let list = await mysql.query('tUsersInfo',id);
+    res.send(list[0])
+})
 
 app.post('/tusers', async(req,res)=>{
     let data = req.body.param;
