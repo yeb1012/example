@@ -23,6 +23,7 @@
                 <td>{{ info.category }}</td>
                 <td>{{ info.product_id }}</td>
                 <td>{{ info.product_name }}</td>
+                <td><button type="button" @click="deleteP(index)"> x </button></td>
                 </tr>
             </tbody>
         </table>
@@ -55,8 +56,13 @@ export default {
                 product_name : this.productInfo.product_name,
                 category : this.productInfo.category
             }
-            this.$store.commit('addProduct', obj); //이렇게 새 객체를 만들어야 추가시 값들이 연결안됨 //참조타입이 가지고 있는 것은 메모리 주소를 가지는 것이기 때문에 새 객체없이 넘기면 다같이 바뀐다구우우우
+            this.$store.dispatch('addProduct', obj); //이렇게 새 객체를 만들어야 추가시 값들이 연결안됨 //참조타입이 가지고 있는 것은 메모리 주소를 가지는 것이기 때문에 새 객체없이 넘기면 다같이 바뀐다구우우우
+            //this.$store.commit('addProduct', obj) //이건 mutations를 불러오고 위에는 actions를 불러옴
+        },
+        deleteP(index){
+            this.productList.splice(index,1);
+            localStorage.removeItem(index);
         }
-    }
+    },
 }
 </script>
