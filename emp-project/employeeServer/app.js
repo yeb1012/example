@@ -15,12 +15,12 @@ app.use(express.json({
     limit: '50mb'
 }))
 
-app.get('/emps', async (req,res)=>{
+app.get('/api/emps', async (req,res)=>{
     const list = await mysql.query('employeeList')
     res.send(list);
 })
 
-app.get('/emps/:no',async (req,res)=>{
+app.get('/api/emps/:no',async (req,res)=>{
     let num = req.params.no
     let list = await mysql.query('employeeGet',num)
     res.send(list[0]);
@@ -30,7 +30,7 @@ const empTable = ['emp_no', 'first_name', 'last_name', 'gender', 'hire_date']
 const deptEmpTable =['emp_no', 'dept_no','from_date','to_date'] //쿼리문과 순서가 같아야함
 const salaries =['emp_no', 'salary','from_date','to_date']
 
-app.post('/emps', async (req,res)=>{
+app.post('/api/emps', async (req,res)=>{
     let empInfo = req.body.param;
 
     let empData = {}; //set절로 넘어오니까 객채로 무조건 넘기기
@@ -74,13 +74,13 @@ app.post('/emps', async (req,res)=>{
 //     res.send(list)
 // })
 
-app.put('/emps/:no',async(req,res)=>{  
+app.put('/api/emps/:no',async(req,res)=>{  
     let datas = [req.body.param, req.params.no];
     let result = await mysql.query('employeeUpdate',datas)
     res.send(result)
 })
 
-app.delete('/emps/:no',async (req,res)=>{
+app.delete('/api/emps/:no',async (req,res)=>{
     let datas = [req.body.param.to_date, req.params.no];
     let result = await mysql.query('employeeDelete',datas)
     res.send(result)
